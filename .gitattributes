@@ -1,3 +1,5 @@
 2.mp4 filter=lfs diff=lfs merge=lfs -text
 .git/objects/5e/3b28bde245de33b4cff2068c19a1f59c100006 filter=lfs diff=lfs merge=lfs -text
 .git/lfs/objects/73/4f/734f6930a9d20d95e43cc72ea4718b7aad0721fd81433eaa86fec26b9453a05e filter=lfs diff=lfs merge=lfs -text
+*.ext filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
