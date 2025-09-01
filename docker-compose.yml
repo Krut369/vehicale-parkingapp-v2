@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - SQLALCHEMY_DATABASE_URI=sqlite:///instance/database.db
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+  worker:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile.worker
+    depends_on:
+      - redis
+      - backend
+
+  beat:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile.beat
+    depends_on:
+      - redis
+      - backend
+
+  redis:
+    image: redis:6
+    ports:
+      - "6379:6379"

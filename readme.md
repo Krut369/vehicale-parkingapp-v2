@@ -1,4 +1,4 @@
-# Vehicle Parking App
+# Vehicle Parking App v2
 
 A full-stack web application for managing vehicle parking lots, reservations, and analytics. Built with **Flask** (backend) and **Vue 3 + Vite** (frontend). Supports user and admin roles, WhatsApp notifications, CSV export, and analytics dashboards.
 
@@ -6,11 +6,8 @@ A full-stack web application for managing vehicle parking lots, reservations, an
 
 ## Demo Video
 
-See the app in action:
-
 <details>
     <summary>Click to expand video demo</summary>
-  
     <video src="2.mp4" controls width="100%"/>
 </details>
 
@@ -30,7 +27,6 @@ vehicle-parking-app-v2/
 │   │   └── tasks/
 │   ├── instance/
 │   │   └── database.db
-│   ├── migrations/
 │   ├── celery_worker.py
 │   ├── celery_beat.py
 │   ├── requirements.txt
@@ -42,6 +38,7 @@ vehicle-parking-app-v2/
     ├── package.json
     ├── vite.config.ts
     └── ...
+docker-compose.yml
 ```
 
 ---
@@ -55,10 +52,35 @@ vehicle-parking-app-v2/
 - **Analytics:** Charts for usage and revenue.
 - **Role-based Routing:** Separate views for users and admins.
 - **Responsive UI:** Built with Bootstrap 5.
+- **Celery Tasks:** Asynchronous and scheduled jobs (reminders, reports).
+- **Dockerized Deployment:** All components run in isolated containers.
+- **Redis Integration:** Fast message broker for Celery.
 
 ---
 
-## Getting Started
+## Dockerized Workflow
+
+All components (backend, frontend, Celery worker/beat, Redis) are containerized and orchestrated via Docker Compose.
+
+### Quick Start
+
+1. **Build and run all services:**
+    ```sh
+    docker-compose up --build
+    ```
+
+2. **Access the app:**
+    - **Frontend:** [http://localhost:5173](http://localhost:5173)
+    - **Backend API:** [http://localhost:5000](http://localhost:5000)
+
+3. **Stop all containers:**
+    ```sh
+    docker-compose down
+    ```
+
+---
+
+## Getting Started (Manual)
 
 ### Prerequisites
 
@@ -71,29 +93,23 @@ vehicle-parking-app-v2/
 ## Backend Setup
 
 1. **Install dependencies:**
-
     ```sh
     cd backend
     pip install -r requirements.txt
     ```
 
 2. **Run the backend server:**
-
     ```sh
     python run.py
     ```
-
     - The API will be available at `http://localhost:5000`.
 
 3. **Celery Worker & Beat (for scheduled tasks):**
-
     In separate terminals:
-
     ```sh
     celery -A celery_worker.celery worker --loglevel=info
     celery -A celery_beat.celery beat --loglevel=info
     ```
-
     - Requires Redis running locally (`redis://localhost:6379/0`).
 
 ---
@@ -101,22 +117,18 @@ vehicle-parking-app-v2/
 ## Frontend Setup
 
 1. **Install dependencies:**
-
     ```sh
     cd frontend
     npm install
     ```
 
 2. **Run the development server:**
-
     ```sh
     npm run dev
     ```
-
     - The app will be available at [http://localhost:5173](http://localhost:5173).
 
 3. **Build for production:**
-
     ```sh
     npm run build
     ```
