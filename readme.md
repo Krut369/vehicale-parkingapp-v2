@@ -8,7 +8,10 @@ A full-stack web application for managing vehicle parking lots, reservations, an
 
 <details>
     <summary>Click to expand video demo</summary>
-    <video src="2.mp4" controls width="100%"/>
+    <video controls width="100%">
+        <source src="https://drive.google.com/uc?export=download&id=1ICpmZAGanHBRiB5kSihoGdNR67QopzFa" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 </details>
 
 ---
@@ -199,3 +202,4 @@ For questions or support, please open an issue or contact the project maintainer
 
 - **Email:** [krutarthsolanki9@gmail.com](mailto:krutarthsolanki9@gmail.com)
 - **GitHub:** [Krut369](https://github.com/Krut369)
+
